@@ -48,9 +48,9 @@ query usersFluxFollowers {
 }
 `
 
-export const GET_USER_NAME = (id) => gql`
-query GetUserName {
-  user(id: ${id}) {
+export const GET_USER_NAME = gql`
+query GetUserName($id: ID!) {
+  user(id: $id) {
     userName
     firstName
     lastName
