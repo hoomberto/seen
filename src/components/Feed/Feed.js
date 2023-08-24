@@ -12,8 +12,18 @@ const Feed = ({ user }) => {
 
   const renderAllPosts = () => {
     if (UserPosts.data && GetPostsFromFollowing.data) {
-      let relevantPosts = [...UserPosts.data.user.posts, ...GetPostsFromFollowing.data.getPostFromFixedFollowing, ...GetPostsFromFollowing.data.getPostFromFluxFollowing]
-      let uniquePosts = [...new Set(relevantPosts)]
+      let relevantPosts = [
+        ...UserPosts.data.user.posts, 
+        ...GetPostsFromFollowing.data.getPostFromFixedFollowing, 
+        ...GetPostsFromFollowing.data.getPostFromFluxFollowing
+      ];
+      let seen = new Set();
+      let uniquePosts = relevantPosts.filter(post => {
+          let duplicate = seen.has(post.id);
+          seen.add(post.id);
+          return !duplicate;
+      });
+      // let uniquePosts = [...new Set(relevantPosts)]
       let limited = uniquePosts.sort((a, b) => a.createdAt > b.createdAt ? -1 : 1).slice(0, 35)
       return limited.map(post => <Post
         key={post.id}
