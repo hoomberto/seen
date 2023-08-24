@@ -22,9 +22,10 @@
 }
 
 .followers-containers {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   position: relative;
-  max-height: 80vh;
-  overflow-y: scroll;
   font-family: 'Roboto', sans-serif;
   padding: 1% 15%;
 }
