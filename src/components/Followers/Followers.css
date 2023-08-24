@@ -1,13 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet');
 
+/* .follow-container {
+  
+} */
+
+.fixed-container,
+.flux-container {
+  display: grid;
+  position: relative;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  max-height: 250px;
+}
+
+.fixed-container > div,
+.flux-container > div {
+  background: rgb(250 128 114 / 37%);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
 
 .followers-containers {
   position: relative;
   max-height: 80vh;
   overflow-y: scroll;
   font-family: 'Roboto', sans-serif;
+  padding: 1% 15%;
 }
 
 .followers-containers h2, .followers-containers h3 {
-  margin-left: 1%;
+  text-align: center;
+}
+
+.metrics-container {
+  padding-bottom: 5%;
+}
+
+.list-container {
+  overflow-y: auto;
+  max-height: calc(250px - 1.5em);
 }
