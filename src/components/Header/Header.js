@@ -9,7 +9,9 @@ import './Header.css'
 const Header = () => {
  const value = useContext(UserContext)
 
- const { data, error } = useQuery(gql.GET_USER_NAME(value))
+ const { data, error } = useQuery(gql.GET_USER_NAME, {
+  variables: { id: value }
+})
 
   return (
     <header>
